@@ -9,33 +9,28 @@ router.get('/:productId', controller.getOne)
 
 module.exports = router;
 
-
-exports.getAllProduct = function(productId) {
-    switch (productId) {
-        case 1:
-            return {
-                id: 1,
-                name: 'Laptop'
-            }
-        case 2:
-            return {
-                id: 2,
-                name: 'Screen'
-            }
-    }
+exports.getAllProducts = function() { 
+    return [
+        {
+            id: 1,
+            name: "Laptop" 
+        },
+        {
+            id: 2,
+            name: "Screen" }
+    ]
 }
 
-exports.getOneProduct = function(productId) {
+exports.getOneProduct = function(productId) { 
     switch (productId) {
-        case 1:
+        case "1":
             return {
                 id: 1,
-                name: 'Laptop'
+                name: "Laptop" 
             }
-        case 2:
-            return {
-                id: 2,
-                name: 'Screen'
-            }
+        case "2": return {
+            id: 2,
+            name: "Screen" 
+        }
     }
 }
