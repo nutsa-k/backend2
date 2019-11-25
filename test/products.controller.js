@@ -8,6 +8,14 @@ exports.getAll = function(req, res) {
     res.json({data: products});
 }
 
+
+
+exports.getAll = async function(req, res) {
+    let products = await Product.find()
+    res.json({data: products})
+}
+
+
 exports.getOne = function(req, res) { 
     let product = model.getOneProduct(req.params.productId)
     res.statusCode = 200

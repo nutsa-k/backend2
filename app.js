@@ -6,6 +6,15 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var coursesRouter = require('./routes/courses');
 const productsRouter = require('./routes/products');
+const mongoose = require('mongoose')
+const config = require('./config') 
+config.init()
+
+mongoose.connect('mongodb://0.0.0.0:27017/cs3051',
+    {useNewUrlParser:true, useUnifiedTopology:true})
+
+
+
 
 var app = express();
 
