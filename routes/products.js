@@ -1,36 +1,9 @@
-var express = require('express');
-var router = express.Router();
 
-const controller = require('../controllers/products.controller')
-
-router.get('/', controller.getAll)
-router.get('/:productId', controller.getOne)
-
-
-module.exports = router;
-
-exports.getAllProducts = function() { 
-    return [
-        {
-            id: 1,
-            name: "Laptop" 
-        },
-        {
-            id: 2,
-            name: "Screen" }
-    ]
-}
-
-exports.getOneProduct = function(productId) { 
-    switch (productId) {
-        case "1":
-            return {
-                id: 1,
-                name: "Laptop" 
-            }
-        case "2": return {
-            id: 2,
-            name: "Screen" 
-        }
-    }
-}
+exports.getProducts = async function() {
+    var MongoClient = require('mongodb').MongoClient
+    let client = await MongoClient.connect('mongodb://0.0.0.0:27017',{useUnifiedTopology:true})
+    let db = client.db('cs3051')
+    let result = await db.collection('users').
+    find().toArray()
+    client.close();
+    return result}
