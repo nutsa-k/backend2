@@ -1,6 +1,6 @@
 
 
-const model = require('../models/product')
+const model = require('../routes/products')
 
 exports.getAll = function(req, res) { 
     let products = model.getAllProducts()
